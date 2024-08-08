@@ -1,0 +1,11 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1562329265-95a6d7a83440?q=80&w=2870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);">
+  <div class="container">
+    <h1>Theater box</h1>
+  </div>
+</div>
+
+<% @lists.each do |list| %>
+  <%= link_to list.name, list_path(list) %>
+<% end %>
+
+<%= link_to "add a list", new_list_path %>
