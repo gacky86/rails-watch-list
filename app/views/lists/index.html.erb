@@ -4,8 +4,17 @@
   </div>
 </div>
 
-<% @lists.each do |list| %>
-  <%= link_to list.name, list_path(list) %>
-<% end %>
+<div class="container">
+  <div class="btn btn-primary m-3">
+    <%= link_to "add a list", new_list_path %>
+  </div>
 
-<%= link_to "add a list", new_list_path %>
+  <div class="cards">
+    <% @lists.each do |list| %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://loremflickr.com/300/200/movies)">
+        <%= link_to list.name, list_path(list) %>
+      </div>
+    <% end %>
+  </div>
+
+</div>

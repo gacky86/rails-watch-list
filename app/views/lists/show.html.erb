@@ -1,14 +1,25 @@
-<%= @list.name %>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1562329265-95a6d7a83440?q=80&w=2870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);">
+  <div class="container">
+    <h1><%= @list.name %></h1>
+  </div>
+</div>
 
-<ul>
+<%= link_to "book mark", new_list_bookmark_path(params[:id]) %>
+
+<div class="container cards">
 <% @bookmarks.each do |bookmark| %>
-  <li>
-    <%= bookmark.comment %>
-    <%= link_to bookmark_path(bookmark),
-    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
-      <i class="fa-solid fa-trash"></i> Delete this bookmark
-    <% end %>
-  </li>
-<% end %>
+  <div class="card" style="width: 18rem;">
+    <% movie = @movies.find(bookmark.movie_id) %>
+    <img src="<%= movie.poster_url %>" class="card-img-top">
 
-</ul>
+    <div class="card-body">
+      <h5 class="card-title"><%= movie.title %></h5>
+      <p class="card-text"><%= bookmark.comment %></p>
+      <%= link_to bookmark_path(bookmark),
+      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+        <i class="fa-solid fa-trash"></i> Delete this bookmark
+      <% end %>
+    </div>
+  </div>
+<% end %>
+</div>
