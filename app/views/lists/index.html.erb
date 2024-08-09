@@ -14,17 +14,19 @@
   <div class="carousel-inner">
     <div class="carousel-item active">
       <div class="row">
-        <% (0..3).each do |n| %>
-          <div class="col-6 col-md-3">
-            <div class="card card-list">
-              <% if @lists[n].photo.attached? %>
-                <%= cl_image_tag @lists[n].photo.key, width: 304, height: 304, crop: :fill %>
-              <% else %>
-                <%= image_tag 'https://picsum.photos/304' %>
-              <% end %>
-              <%= link_to @lists[n].name, list_path(@lists[n].id) %>
+        <% if @lists.any? %>
+          <% @lists.first(4).each do |list| %>
+            <div class="col-6 col-md-3">
+              <div class="card card-list">
+                <% if list.photo.attached? %>
+                  <%= cl_image_tag list.photo.key, width: 304, height: 304, crop: :fill %>
+                <% else %>
+                  <%= image_tag 'https://picsum.photos/304' %>
+                <% end %>
+                <%= link_to @lists[n].name, list_path(@lists[n].id) %>
+              </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
       </div>
     </div>
