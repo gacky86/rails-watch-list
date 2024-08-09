@@ -7,9 +7,14 @@
 <div class="container">
   <div class="my-form">
     <%= simple_form_for(@list) do |f| %>
-      <%= f.input :name, input_html: { class: 'custom-font-color' }  %>
-      <%= f.input :photo, as: :file,  input_html: { class: 'custom-font-color' }  %>
+      <%= f.input :name %>
+      <%= f.input :photo, as: :file %>
       <%= f.submit "Make!", class: "btn btn-primary" %>
     <% end %>
   </div>
+
+  <div class="container p-2">
+    <%= link_to "Go back to Home", root_path, class: "btn btn-danger" %>
+  </div>
+
 </div>
