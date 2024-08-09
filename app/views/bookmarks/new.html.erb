@@ -1,7 +1,14 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1562329265-95a6d7a83440?q=80&w=2870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);">
+  <div class="container">
+    <h1>Make your Bookmark</h1>
+  </div>
+</div>
 
+<div class="container">
 <%= simple_form_for [@list, @bookmark] do |f| %>
-  <%= f.input :comment %>
+  <%= f.input :comment, input_html: { style: 'color: #ffffff;' } %>
   <%# association returns movie_id from this form to bookmarks#create %>
-  <%= f.association :movie, collection: @movies, prompt: "Choose a Movie" %>
-  <%= f.submit "new bookmark", class: "btn btn-primary" %>
+  <%= f.association :movie, collection: @movies, prompt: "Choose a Movie", input_html: { style: 'color: #000000;' } %>
+  <%= f.submit "Make!", class: "btn btn-primary" %>
 <% end %>
+</div>

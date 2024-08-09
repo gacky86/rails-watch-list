@@ -1,5 +1,15 @@
-<%= simple_form_for(@list) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :photo, as: :file %>
-  <%= f.submit %>
-<% end %>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1562329265-95a6d7a83440?q=80&w=2870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);">
+  <div class="container">
+    <h1>Make your List</h1>
+  </div>
+</div>
+
+<div class="container">
+  <div class="my-form">
+    <%= simple_form_for(@list) do |f| %>
+      <%= f.input :name, input_html: { class: 'custom-font-color' }  %>
+      <%= f.input :photo, as: :file,  input_html: { class: 'custom-font-color' }  %>
+      <%= f.submit "Make!", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

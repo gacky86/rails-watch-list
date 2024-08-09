@@ -4,22 +4,23 @@
   </div>
 </div>
 
-<%= link_to "book mark", new_list_bookmark_path(params[:id]) %>
+<div class="container p-2">
+  <%= link_to "Make new List", new_list_bookmark_path(params[:id]), class: "btn btn-danger" %>
+</div>
+
 
 <div class="container cards">
-<% @bookmarks.each do |bookmark| %>
-  <div class="card" style="width: 18rem;">
-    <% movie = @movies.find(bookmark.movie_id) %>
-    <img src="<%= movie.poster_url %>" class="card-img-top">
-
-    <div class="card-body">
-      <h5 class="card-title"><%= movie.title %></h5>
-      <p class="card-text"><%= bookmark.comment %></p>
-      <%= link_to bookmark_path(bookmark),
-      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
-        <i class="fa-solid fa-trash"></i> Delete this bookmark
-      <% end %>
+  <% @bookmarks.each do |bookmark| %>
+    <div class="card" style="width: 18rem;">
+      <% movie = @movies.find(bookmark.movie_id) %>
+      <img src="<%= movie.poster_url %>" class="card-img-top">
+      <div class="card-body my-card-body">
+        <h5 class="card-title"><%= movie.title %></h5>
+        <%= link_to bookmark_path(bookmark),
+        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+          <i class="fa-solid fa-trash"></i>
+        <% end %>
+      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
 </div>
