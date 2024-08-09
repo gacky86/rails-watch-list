@@ -23,7 +23,7 @@
                 <% else %>
                   <%= image_tag 'https://picsum.photos/304' %>
                 <% end %>
-                <%= link_to @lists[n].name, list_path(@lists[n].id) %>
+                <%= link_to list.name, list_path(list.id) %>
               </div>
             </div>
           <% end %>
