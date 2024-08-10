@@ -3,55 +3,62 @@
     <h1>Theater box</h1>
   </div>
 </div>
-
-
 <div class="container p-2">
-  <%= link_to "Make your List", new_list_path, class: "btn btn-danger" %>
+  <%= link_to "Add New List", new_list_path, class: "btn btn-danger my-btn" %>
 </div>
-
 <div class="container">
-<div id="myCarousel" class="carousel slide">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <div class="row">
-        <% if @lists.any? %>
-          <% @lists.first(4).each do |list| %>
-            <div class="col-6 col-md-3">
-              <div class="card card-list">
-                <% if list.photo.attached? %>
-                  <%= cl_image_tag list.photo.key, width: 304, height: 304, crop: :fill %>
-                <% else %>
-                  <%= image_tag 'https://picsum.photos/304' %>
-                <% end %>
-                <%= link_to list.name, list_path(list.id) %>
+  <% if @lists.any? %>
+    <% lists_len = @lists.size %>
+    <% lists_len <= 4 ? active_len = lists_len : active_len = 4%>
+    <div id="myCarousel" class="carousel slide">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="row">
+            <% @lists.first(active_len).each do |list| %>
+              <div class="col-6 col-md-3">
+                <div class="card card-list">
+                  <% if list.photo.attached? %>
+                    <%= cl_image_tag list.photo.key, width: 250, height: 250, crop: :fill %>
+                  <% else %>
+                    <%= image_tag 'list_default.jpg', alt: "default image for list", width: 250, height: 250 %>
+                  <% end %>
+                  <%= link_to list.name, list_path(list.id) %>
+                </div>
               </div>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
-    <% @lists.each do |list| %>
-      <div class="carousel-item">
-        <div class="col-6 col-md-3">
-            <div class="card card-list">
-              <% if list.photo.attached? %>
-                <%= cl_image_tag list.photo.key, width: 304, height: 304, crop: :fill %>
-              <% else %>
-                <%= image_tag 'https://picsum.photos/304' %>
+            <% end %>
+          </div>
+        </div>
+        <% if lists_len > 4 %>
+          <div class="carousel-item">
+            <div class="row">
+              <% @lists[5..-1].each do |list| %>
+                <div class="col-6 col-md-3">
+                  <div class="card card-list">
+                    <% if list.photo.attached? %>
+                      <%= cl_image_tag list.photo.key, width: 250, height: 250, crop: :fill %>
+                    <% else %>
+                      <%= image_tag 'list_default.jpg', alt: "default image for list", width: 250, height: 250 %>
+                    <% end %>
+                    <%= link_to list.name, list_path(list.id) %>
+                  </div>
+                </div>
               <% end %>
-              <%= link_to list.name, list_path(list.id) %>
             </div>
           </div>
+        <% end %>
       </div>
-    <% end %>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  <% else %>
+    <div class="no-carousel">
+      <h2>There is no List yet...</h2>
+    </div>
+  <% end %>
 </div>

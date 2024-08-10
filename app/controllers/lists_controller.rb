@@ -2,6 +2,7 @@ class ListsController < ApplicationController
   # :index, :show, :new, :create
   def index
     @lists = List.all
+    # raise
   end
   def show
     @list = List.find(params[:id])

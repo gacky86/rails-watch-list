@@ -3,6 +3,9 @@
     <h1>Make your Bookmark</h1>
   </div>
 </div>
+<div class="container p-2">
+  <%= link_to "Go back to List", list_path(params[:list_id]), class: "btn btn-danger" %>
+</div>
 
 <div class="container">
   <div class="my-form">
@@ -10,11 +13,8 @@
       <%= f.input :comment %>
       <%# association returns movie_id from this form to bookmarks#create %>
       <%= f.association :movie, collection: @movies, prompt: "Choose a Movie" %>
-      <%= f.submit "Make!", class: "btn btn-primary" %>
+      <%= f.submit "Make new Boookmark", class: "btn btn-danger" %>
     <% end %>
   </div>
 
-  <div class="container p-2">
-    <%= link_to "Go back to List", list_path(params[:list_id]), class: "btn btn-danger" %>
-  </div>
 </div>
