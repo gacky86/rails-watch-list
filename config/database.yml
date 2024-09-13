@@ -78,7 +78,14 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  <<: *default
   database: rails_watch_list_production
-  username: rails_watch_list
-  password: <%= ENV["RAILS_WATCH_LIST_DATABASE_PASSWORD"] %>
+  adapter: postgresql
+  encoding: unicode
+  charset: unicode
+  collation: unicode_general_ci
+  username: <%= Rails.application.credentials.db[:user_name] %>
+  password: <%= Rails.application.credentials.db[:password] %>
+  host: <%= Rails.application.credentials.db[:endpoint] %>
+  pool: 20
+  timeout: 1000
+
